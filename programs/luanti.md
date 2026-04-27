@@ -1,6 +1,9 @@
-# Minetest notes
+# Luanti notes
 
 Michael McMahon
+
+Note: This project changed names and I am still updating my notes. They are
+still updating their name internally too last I checked.
 
 [Minetest](https://www.minetest.net/) is an open source game engine similar to
 Minecraft or other voxel games.  This engine can run a variety of games called

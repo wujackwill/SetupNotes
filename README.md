@@ -49,7 +49,7 @@ These are **some of** my notes.
     - [ansible.md](https://github.com/TechnologyClassroom/SetupNotes/blob/master/programs/configuration-mgmt/ansible.md)
   - [git.md](https://github.com/TechnologyClassroom/SetupNotes/blob/master/programs/git.md)
   - [Github.md](https://github.com/TechnologyClassroom/SetupNotes/blob/master/programs/Github.md)
-  - [Minetest.md](https://github.com/TechnologyClassroom/SetupNotes/blob/master/programs/Minetest.md)
+  - [luanti.md](https://github.com/TechnologyClassroom/SetupNotes/blob/master/programs/luanti.md)
   - [sphinx-docnotes.md](https://github.com/TechnologyClassroom/SetupNotes/blob/master/programs/sphinx-docnotes.md)
   - [thunderbird.md](https://github.com/TechnologyClassroom/SetupNotes/blob/master/programs/thunderbird.md)
   - [tmux.md](https://github.com/TechnologyClassroom/SetupNotes/blob/master/programs/tmux.md)
