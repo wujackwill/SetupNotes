@@ -2,33 +2,38 @@
 
 Michael McMahon
 
-IMPORTANT NOTE: Use [Proxmox](https://www.proxmox.com/en/) or [virt-manager](https://virt-manager.org/) instead of ESXi.
+IMPORTANT NOTE: Use [Cockpit](https://cockpit-project.org/),
+[Incus](https://linuxcontainers.org/incus/), or
+[virt-manager](https://virt-manager.org/) instead of ESXi. I do not recommend
+using ESXi, Hyper-V, vSphere, Proxmox, or VirtualBox.
 
-Reasons to use Proxmox instead of ESXi:
+Reasons to use Cockpit instead of ESXi:
 
-* Proxmox is based on the community-run Debian distribution.
-* Proxmox seems to generally do things the correct way.
-* Hardware compatibility is better with Proxmox.
-* Proxmox can optionally use Ceph storage.
-* No account is required to download and use Proxmox.
+* Cockpit is free software and open source.
+* Cockpit is developed by Red Hat.
+* Cockpit is available in most distributions software repositories. Install is
+  easy like: `apt install cockpit`
+* Hardware compatibility is better with standard GNU/Linux distributions than
+  ESXi.
+* Cockpit can optionally use Ceph storage.
 * [ESXi does not play well with others.](https://en.wikipedia.org/wiki/VMware#Litigation)
-* There is no downside. Use Proxmox instead of ESXi.
+* There is no downside. Use Cockpit instead of ESXi.
 
 Reasons to use ESXi instead of Proxmox:
 
-* Your work refuses to use anything other than ESXi.
+* Your employer refuses to use anything other than ESXi.
 
 ESXi (VMware vSphere Hypervisor) uses the proprietary vmkernel.
 
 Some of my former clients used ESXi so I had started teaching myself. I am not
-interested in this subject so Ionly focus on installation and initial
-configuration because of VMware's proprietary nature and 
-[this](https://sfconservancy.org/copyleft-compliance/vmware-lawsuit-faq.html), 
+interested in this subject so I only focus on installation and initial
+configuration because of VMware's proprietary nature and
+[this](https://sfconservancy.org/copyleft-compliance/vmware-lawsuit-faq.html),
 [this](http://www.zdnet.com/article/vmware-sued-for-failure-to-comply-with-linuxs-license/),
 and
 [this](https://opensource.com/law/16/8/gpl-enforcement-action-hellwig-v-vmware).
-If you see I have made a mistake or know of a better way of doing things, add an
-issue to the SetupNotes repository or send me an email.
+If you see I have made a mistake or know of a better way of doing things, add
+an issue to the SetupNotes repository or send me an email.
 
 [Official documentation](https://www.vmware.com/support/vsphere-hypervisor.html)
 
@@ -42,9 +47,9 @@ issue to the SetupNotes repository or send me an email.
 
 [Download (free account required)](http://www.vmware.com/go/get-free-esxi)
 
-Note: At the time of this writing, only the latest iso can be downloaded with a free
-account. In January 2017, every available version could be downloaded with a
-free account.
+Note: At the time of this writing, only the latest iso can be downloaded with a
+free account. In January 2017, every available version could be downloaded with
+a free account.
 
 ## Installation
 
@@ -67,17 +72,17 @@ Choose the drive you want to install on with the up and down arrow keys.
 (Enter) Continue
 
 Note: If you configure a fake RAID, ESXi will see all of the drives instead of
-the RAID.  ESXi does not allow fake RAID or software RAID.  There is not a way
-to have RAID 1 with SATADOM and ESXi.  Hardware RAID works fine on supported
+the RAID. ESXi does not allow fake RAID or software RAID. There is not a way to
+have RAID 1 with SATADOM and ESXi. Hardware RAID works fine on supported
 hardware.
 
-Choose the language with the up and down arrow keys.  (Enter) Continue
+Choose the language with the up and down arrow keys. (Enter) Continue
 
-NOTE: As of ESXi 6.7, the password rules have changed.  All passwords require a
-lowercase letter, an uppercase letter, a number, and a special character.  The
+NOTE: As of ESXi 6.7, the password rules have changed. All passwords require a
+lowercase letter, an uppercase letter, a number, and a special character. The
 simplest default password is Password1!
 
-Enter your password twice.  Use tab to get to the second password box.  (Enter)
+Enter your password twice. Use tab to get to the second password box. (Enter)
 Continue
 
 (F11) Install
@@ -89,7 +94,7 @@ Continue
 See [my page on PXE](https://github.com/TechnologyClassroom/pxe) for my syslinux
 configs.
 
-The boot.cfg file must be modified once the extracted into the tftp.  This sed
+The boot.cfg file must be modified once the extracted into the tftp. This sed
 command will remove all of the forward slashes if run from the same directory.
 
 ```
@@ -100,13 +105,13 @@ sed -i 's/\///g' boot.cfg
 ## Troubleshooting Installation
 
 If the installation fails, enter a different TTY for troubleshooting.
-CTRL+ALT+F1 will drop to TTY1.  User is root.  Password is blank.
+CTRL+ALT+F1 will drop to TTY1. User is root. Password is blank.
 
 List the logs.
 
 ```ls /var/log/```
 
-View a log.  Replace nameoflog with the log you would like to inspect.
+View a log. Replace nameoflog with the log you would like to inspect.
 
 ```less /var/log/nameoflog```
 
@@ -118,7 +123,7 @@ List NICs.
 
 <F2> Customize System/View Logs
 
-Press tab.  Enter password.  Press enter.
+Press tab. Enter password. Press enter.
 
 Note: With ESXi 6.7, the password rules have changes and require multiple
 character types.
@@ -133,27 +138,27 @@ them.
 Note: If all of your network adapters are not shown, reinstall with a different
 version of ESXi.
 
-Press enter.  Press escape.  Press Y.  Press escape.
+Press enter. Press escape. Press Y. Press escape.
 
-An IP address should be shown.  To access the web portal, open the address
-listed with a web browser from another computer on the network.  Example:
-http://555.555.555.555/ (DHCP).  Username is root.  Password is set during
+An IP address should be shown. To access the web portal, open the address
+listed with a web browser from another computer on the network. Example:
+http://555.555.555.555/ (DHCP). Username is root. Password is set during
 installation.
 
 <F12> Shut Down/Restart
 
-Press tab.  Enter password.  Press enter.
+Press tab. Enter password. Press enter.
 
 <F2> Shut Down
 
 ## Updating the system manually
 
 Based on William Lam's article:
-https://www.virtuallyghetto.com/2013/06/quick-tip-listing-image-profiles-from.html
+<https://www.virtuallyghetto.com/2013/06/quick-tip-listing-image-profiles-from.html>
 
 <F2> Customize System/View Logs
 
-Press tab.  Enter password.  Press enter.
+Press tab. Enter password. Press enter.
 
 Troubleshooting Options
 
@@ -162,30 +167,30 @@ Enable ESXi SHell
 Enable SSH
 
 On a machine with openssh-client and scp, open a browser to
-https://my.vmware.com/group/vmware/patch#search.
+<https://my.vmware.com/group/vmware/patch#search>.
 
 Login or make a free account.
 
 Change the drop down to "ESXi (Embedded and Installable)" and click on the blue
 Search button.
 
-Updates are cumulative.  Click on the blue Download button for the latest
+Updates are cumulative. Click on the blue Download button for the latest
 update.
 
 Check to see if there is an update.
 
-Open a terminal.  Navigate to the download location.
+Open a terminal. Navigate to the download location.
 
-Use scp to copy the update to the server.  Note: WinSCP can be used on Windows
+Use scp to copy the update to the server. Note: WinSCP can be used on Windows
 instead of scp.
 
-In this case, my server is 10.12.17.101.  My update is ESXi650-201803001.zip.
+In this case, my server is 10.12.17.101. My update is ESXi650-201803001.zip.
 
 ```scp ESXi650-201803001.zip root@10.12.17.101:/vmfs/volumes/datastore1```
 
 Type yes and enter the password.
 
-ssh into the server.  Note: PuTTY can be used on Windows instead of ssh.
+ssh into the server. Note: PuTTY can be used on Windows instead of ssh.
 
 ```ssh root@10.12.17.101```
 
@@ -202,7 +207,7 @@ Install the version of the update that you want to install.
 ```esxcli software profile update -d /vmfs/volumes/datastore1/ESXi650-201803001.zip -p $(esxcli software sources profile list -d /vmfs/volumes/datastore1/ESXi650-201803001.zip | awk '{ print $1 }' | tail -n 1)```
 
 Note: The above command will only work if it is run from the shell of the ESXi
-machine.  If the ```$(...)``` portion of the script is run from another machine,
+machine. If the ```$(...)``` portion of the script is run from another machine,
 the esxcli command will not be understood and the update will not continue.
 
 Remove the update.
@@ -215,7 +220,7 @@ Reboot the system.
 
 <F2> Customize System/View Logs
 
-Press tab.  Enter password.  Press enter.
+Press tab. Enter password. Press enter.
 
 Troubleshooting Options
 
@@ -230,7 +235,7 @@ https://www.virtuallyghetto.com/2013/06/quick-tip-listing-image-profiles-from.ht
 
 <F2> Customize System/View Logs
 
-Press tab.  Enter password.  Press enter.
+Press tab. Enter password. Press enter.
 
 Troubleshooting Options
 
@@ -244,10 +249,10 @@ Login or make a free account.
 Change the drop down to "ESXi (Embedded and Installable)" and click on the blue
 Search button.
 
-Updates are cumulative.  Click on the blue Download button for the latest
+Updates are cumulative. Click on the blue Download button for the latest
 update.
 
-Open a terminal.  Navigate to the download location.
+Open a terminal. Navigate to the download location.
 
 Create these scripts and modify the variables for the update.
 
@@ -316,7 +321,7 @@ Replace ```192.168.1.67``` with the IP address of the ESXi machine.
 
 <F2> Customize System/View Logs
 
-Press tab.  Enter password.  Press enter.
+Press tab. Enter password. Press enter.
 
 Troubleshooting Options
 
@@ -324,7 +329,7 @@ Disable SSH
 
 ## RAID Notes
 
-ESXi cannot do fake RAID or software RAID.  If you need to install ESXi to a
+ESXi cannot do fake RAID or software RAID. If you need to install ESXi to a
 RAID, you must use a hardware RAID controller such as 3108.
 
 ## Installing Broadcom LSI Drivers (Manually)
@@ -332,7 +337,7 @@ RAID, you must use a hardware RAID controller such as 3108.
 - Download the LSI drivers.
 
 Unlike LSI drivers for all other operating systems, LSI drivers must be
-downloaded from the vmware page.  A free login is required.  Here is a search
+downloaded from the vmware page. A free login is required. Here is a search
 link to start your search:
 
 https://my.vmware.com/group/vmware/searchresults#site=my_download&client=my_download&getfields=*&output=xml_no_dtd&filter=0&proxyreload=1&proxystylesheet=my_download_en&sort=date:D:S:d1&num=10&entqr=3&q=SAS+Driver+for+Avago+MegaRAID&dscaf=__&requiredfields=dsca_lang:en&ie=UTF-8&ulang=en&ip=198.0.155.97&access=p&entqrm=0&wc=200&wc_mc=1&oe=UTF-8&ud=1&start=10
@@ -344,7 +349,7 @@ archive onto your local machine.
 
 <F2> Customize System/View Logs
 
-Press tab.  Enter password.  Press enter.
+Press tab. Enter password. Press enter.
 
 Troubleshooting Options
 
@@ -380,7 +385,7 @@ rm /vmfs/volumes/datastore1/vmware-esx-provider-lsiprovider.vib
 
 <F2> Customize System/View Logs
 
-Press tab.  Enter password.  Press enter.
+Press tab. Enter password. Press enter.
 
 Troubleshooting Options
 
@@ -433,7 +438,7 @@ sudo apt-get install -y libxml2-dev
 sudo ./vmware-install.pl
 ```
 
-Press enter, q, yes, yes to get through the menu.  This can be automated with
+Press enter, q, yes, yes to get through the menu. This can be automated with
 heredocs in a bash script.
 
 ## Find the moid of your VM
@@ -476,7 +481,7 @@ EntityName: VM-NAME-HERE         MoRefID: 2
 https://www.vmware.com/go/download-vmrc
 
 I used VMware-Remote-Console-10.0.3-9300449.x86_64.bundle at the time of this
-writing.  The file is a plaintext bash script.
+writing. The file is a plaintext bash script.
 
 - Install vmrc.
 
