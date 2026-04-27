@@ -14,7 +14,8 @@ What do you need?
 For this, I am using the Raspberry Pi Pico H, but it may work for all of the
 Raspberry Pi Pico boards.
 
-I prices out all of these parts based on Cambridge, MA prices includes sales tax on 2026-02-05.
+I prices out all of these parts based on Cambridge, MA prices includes sales
+tax on 2026-02-05.
 
 * $5.31 [Raspberry Pico H](https://www.microcenter.com/product/650107/raspberry-pi-pico-h-raspberry-pi-pico-with-headers-pre-installed)
 * $6.45 [SOIC8 chip clip](https://www.ebay.com/itm/316562966853) (Can save buying in larger quantities.)
@@ -105,9 +106,9 @@ If that worked, you should have a `pico_serprog.uf2` file.
 ls pico_serprog.uf2
 ```
 
-Plug in a Rapsberry Pi Pico and the system should mount it as a drive. If it was
- not mounted, unplug, hold the button, and plug it in again. In my case, it was
- mounted as the `/media/user/RPI-RP2/` directory.
+Plug in a Rapsberry Pi Pico and the system should mount it as a drive. If it
+was not mounted, unplug, hold the button, and plug it in again. In my case, it
+was mounted as the `/media/user/RPI-RP2/` directory.
 
 ```
 cp pico_serprog.uf2 /media/user/RPI-RP2/
