@@ -1,10 +1,11 @@
 # SetupNotes
+
 Notes on setting up systems within educational settings.
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br>
-Copyright © Michael McMahon 2015-2021.  Except where otherwise specified, the
-text on [Setup Notes](https://github.com/TechnologyClassroom/SetupNotes/)
-by Michael McMahon is licensed under the
+Copyright © Michael McMahon 2015-2026. Except where otherwise specified, the
+text on [Setup Notes](https://github.com/TechnologyClassroom/SetupNotes/) by
+Michael McMahon is licensed under the
 [Creative Commons Attribution-ShareAlike License 4.0 (International) (CC-BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
 
 If you like what I am doing here and found some of this advice useful, consider
@@ -14,20 +15,20 @@ The one thing that has advanced my career with technology the most is taking
 notes.
 
 When I am about to do something new, I first write out what I am trying to do,
-the problem that I am trying to solve, or the original error message.  I then
-research the topic.  I take notes on the research and add the relevant links.
+the problem that I am trying to solve, or the original error message. I then
+research the topic. I take notes on the research and add the relevant links.
 Before I follow a workflow from the Internet, I try to understand the workflow
-as thoroughly as possible.  I document the process I use and add any notes about
+as thoroughly as possible. I document the process I use and add any notes about
 what each step does.
 
 If I messed up something, I should be able to refer to my notes and undo any
-changes.  I then document that process.
+changes. I then document that process.
 
 Months later when I have forgotten the process, I can look at my notes instead
 of restarting over again at the research phase.
 
 These are **some of** my notes.
- 
+
 - [os/](https://github.com/TechnologyClassroom/SetupNotes/tree/master/os) - Operating Systems
   - [GNULinux/](https://github.com/TechnologyClassroom/SetupNotes/tree/master/os/GNULinux)
     - [GNULinuxOnMacbooks.md](https://github.com/TechnologyClassroom/SetupNotes/blob/master/os/GNULinux/GNULinuxOnMacbooks.md)
@@ -56,4 +57,5 @@ These are **some of** my notes.
   - [neovim.md](https://github.com/TechnologyClassroom/SetupNotes/blob/master/programs/neovim.md)
   - [web-browsers/](https://github.com/TechnologyClassroom/SetupNotes/tree/master/programs/web-browsers)
 
-Note: I reorganized several directories so I may have broken some links if you have bookmarked any of my pages.
+Note: I reorganized several directories so I may have broken some links if you
+have bookmarked any of my pages.
